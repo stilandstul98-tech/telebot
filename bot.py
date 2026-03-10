@@ -10,19 +10,32 @@ dp = Dispatcher()
 
 
 @dp.message(Command("start"))
-
 async def cmd_start(message: Message):
     await message.answer("Привет я твой первый бот")
-    
-@dp.message(Command("help"))
 
+
+@dp.message(Command("help"))
 async def cmd_help(message: Message):
     await message.answer("Доступные команды: \n/start - начать\n/help - помощь")
+
+
+@dp.message(Command("about"))
+async def cmd_about(message: Message):
+    await message.answer("Переходите на наши соц.сети для дополнительных вопросов")
+
+    
+@dp.message(F.text == "Пока")
+async def bay(message: Message):
+    await message.answer("До свидания!")
+
     
 @dp.message(F.text)
-
 async def echo(message: Message):
     await message.answer(message.text)
+
+
+
+
 
 
 
